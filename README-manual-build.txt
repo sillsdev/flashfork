@@ -4,7 +4,7 @@ Then, make a zip file containing this folder and this file, side by side:
   flashfr.py
 
 Then, log in and upload the zip file to this addon's page: 
-https://ankiweb.net/shared/info/
+https://ankiweb.net/shared/info/558884301
 
 
 

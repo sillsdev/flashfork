@@ -10,8 +10,8 @@ from anki.utils import checksum, intTime
 import time
 
 VERSION = 'v0.1'
-ADDON_NAME = 'FlashFork: Copy a deck...'
-NAME_IN_MENU = ADDON_NAME + ' ' + VERSION
+ADDON_NAME = 'FlashFork' 
+NAME_IN_MENU = ADDON_NAME + ': Copy selected deck...'
 
 def noteTypes(deck):
     
@@ -242,12 +242,13 @@ def onCopyDeckClicked():
     dupMids = [unicode(m['id']) for m in models]  # assume "Clone all"
 
     modelNames = [m['name'] for m in models]
-    q = ''' The current deck (%s) uses these Note Types:
+    q = '''%s %s
+The current deck (%s) uses these Note Types:
 %s
 Do you want the copied deck to share these settings, or
 do you want to clone the settings?
 (Either way, media files will be shared, not cloned.)
-    ''' % (deck['name'], ', '.join(modelNames))
+    ''' % (ADDON_NAME, VERSION, deck['name'], ', '.join(modelNames))
     buttons = ['Clone all', 'Share all', 'Ask', 'Cancel']
     dlg = askUserDialog(q, buttons)
     dlg.setIcon(4)
@@ -288,6 +289,7 @@ do you want to clone the settings?
     showInfo(msg)
 
 
+mw.form.menuTools.addSeparator()
 action = QAction(NAME_IN_MENU, mw)
 mw.connect(action, SIGNAL("triggered()"), onCopyDeckClicked)
 mw.form.menuTools.addAction(action)
